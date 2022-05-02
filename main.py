@@ -8,7 +8,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import(
-    MessageEvent, TextMessage, TextSendMessage
+    MessageEvent, TextMessage, TextSendMessage, SourceUser
 )
 
 import reply_console
@@ -41,9 +41,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
         try:
+            UserID = event.source.user_id
+            user_display_name = line_bot_api.get_profile(UserID).display_name
             line_bot_api.reply_message(
                 event.reply_token,
-                reply_console.reply(event.message.text)
+                reply_console.reply(event.message.text,user_display_name)
             )
         except AttributeError:
             print(event.message.text)

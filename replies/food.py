@@ -9,7 +9,7 @@ food_dict = {
 }
 
 
-def reply(input):
+def reply(input,username):
     if input == "找吃的！":
         return find_eat()
     elif input == "早餐！":
