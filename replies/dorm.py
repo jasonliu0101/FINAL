@@ -40,7 +40,7 @@ def reply(input, username):
     elif input == "我是便利商店愛好者":
         return get_dorm_result_man(input)
 
-    elif input == "一樣有便利商店但設備較新的":
+    elif input == "我想要設備較新的":
         return get_dorm_result_man(input)
 
     elif input == "我怕吃土，給我最便宜的":
@@ -83,8 +83,8 @@ def choose_dorm(sex):
                             text="我是便利商店愛好者",
                         ),
                         MessageAction(
-                            label="一樣有便利商店但設備較新的",
-                            text="一樣有便利商店但設備較新的"
+                            label="我想要設備較新的",
+                            text="我想要設備較新的"
                         ),
                         MessageAction(
                             label="我怕吃土，給我最便宜的",
@@ -144,7 +144,7 @@ def get_dorm_result_man(input):
                 ImageSendMessage(original_content_url='https://i.imgur.com/ztLc7oS.jpeg',
                                  preview_image_url='https://i.imgur.com/ztLc7oS.jpeg'),
                 TextSendMessage(text="除了這邊的懶人包以外網路上也有很多資訊喔～祝福你抽到最適合你的宿舍！🥺🥺")]
-    elif input == "一樣有便利商店但設備較新的":
+    elif input == "我想要設備較新的":
         return [TextSendMessage(text="看來最適合你的是【光二】"),
                 ImageSendMessage(original_content_url='https://i.imgur.com/lu1ckVy.jpeg',
                                  preview_image_url='https://i.imgur.com/lu1ckVy.jpeg'),
