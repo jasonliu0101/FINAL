@@ -1,6 +1,6 @@
 from linebot.models import *
 
-food_dict = {
+food_dict = { #本頁所有的回應，從這邊判斷而不從if-else判斷是因為dict比較快
     "找吃的！",
     "早餐！",
     "午餐！",
@@ -23,11 +23,11 @@ def reply(input,username):
 
 
 def find_eat():
-    return TextSendMessage(
+    return TextSendMessage(    #TextSendMessage:傳訊息，quick_reply：訊息下面的快速按鈕
         text="想吃哪一餐？",
         quick_reply=QuickReply(
             items=[
-                QuickReplyButton(action=MessageAction(label="早餐", text="早餐！")),
+                QuickReplyButton(action=MessageAction(label="早餐", text="早餐！")),   #QuickReplyButton:設定按鈕的內容
                 QuickReplyButton(action=MessageAction(label="午餐", text="午餐！")),
                 QuickReplyButton(action=MessageAction(label="晚餐", text="晚餐！")),
                 QuickReplyButton(action=MessageAction(label="宵夜", text="宵夜！"))

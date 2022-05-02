@@ -42,10 +42,10 @@ def callback():
 def handle_message(event):
         try:
             UserID = event.source.user_id
-            user_display_name = line_bot_api.get_profile(UserID).display_name
+            user_display_name = line_bot_api.get_profile(UserID).display_name  #獲得使用者的名稱
             line_bot_api.reply_message(
                 event.reply_token,
-                reply_console.reply(event.message.text,user_display_name)
+                reply_console.reply(event.message.text,user_display_name)  #呼叫reply_console裡面的reply()，接下來給reply_console裡的reply()處理
             )
         except AttributeError:
             print(event.message.text)

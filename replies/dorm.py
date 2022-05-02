@@ -1,6 +1,6 @@
 from linebot.models import *
 
-dorm_dict = {
+dorm_dict = {   #本頁所有的回應，從這邊判斷而不從if-else判斷是因為dict比較快
     "找宿舍！",
     "我是男生！",
     "我是女生！",
@@ -50,7 +50,7 @@ def reply(input, username):
         return get_dorm_result_man(input)
 
 def choose_sex(username):
-    return [TextSendMessage(
+    return [TextSendMessage(    #TextSendMessage:傳訊息，quick_reply：訊息下面的快速按鈕，此處要傳好幾則回覆所以要用List做，直接將list回傳就會照list的順序發送
         text="哈囉" + username + "，在找宿舍嗎？\n宿舍生活絕對是大學青春生涯的第一步！祝福你遇見好室友😍😍"),
         TextSendMessage(
             text="那請問你是男生還是女生呢？",
@@ -63,22 +63,22 @@ def choose_sex(username):
 
 
 def choose_dorm(sex):
-    emoji = [
-        line_emoji_x1(2, "5ac1bfd5040ab15980c9b435", "020"),
+    emoji = [     #要包含line自己的emoji就要 1.設定好要放的是在第幾個位置，並在那個位置放$，然後位置要從0開始算，放錯會有error 2.找LineEmoji的ProductCode跟編號，可以上網找到，有官方貼圖集
+        line_emoji_x1(2, "5ac1bfd5040ab15980c9b435", "020"),  #這是我自己做的Function，具體方法可以看Function內容
         line_emoji_x1(30, "5ac1bfd5040ab15980c9b435", "003"),
         line_emoji_x1(31, "5ac1bfd5040ab15980c9b435", "003"),
     ]
     if sex == "man":
         return [
             TextSendMessage(text="讚讚$！那這是成大四間宿舍的外觀圖，有沒有特別想要的偏好呢？$$", emojis=emoji),
-            TemplateSendMessage(
+            TemplateSendMessage( #這個是按鈕樣版訊息的格式
                 alt_text="template",
                 template=ButtonsTemplate(
                     thumbnail_image_url="https://i.imgur.com/JXTwuZw.jpeg",
                     title="選一個偏好吧！",
                     text="👇",
                     actions=[
-                        MessageAction(
+                        MessageAction(  #這邊是在設定按鈕按下以後回傳的是訊息
                             label="我是便利商店愛好者",
                             text="我是便利商店愛好者",
                         ),
