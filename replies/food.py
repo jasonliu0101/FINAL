@@ -1,7 +1,7 @@
 from linebot.models import *
 
 food_dict = { #本頁所有的回應，從這邊判斷而不從if-else判斷是因為dict比較快
-    "找吃的！",
+    "找吃！",
     "早餐！",
     "午餐！",
     "晚餐！",
