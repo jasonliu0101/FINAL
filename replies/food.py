@@ -37,10 +37,9 @@ def find_eat():
 def return_meal(meal):
     if meal == "breakfast":
         return [TextSendMessage(text="這邊是成大周邊的美食早點，快挑一家嚐嚐吧🤤🤤"),
-                ImageSendMessage(original_content_url='https://imgur.com/Nw2KB08.jepg',
-                                 preview_image_url='https://imgur.com/Nw2KB08.jpeg',
-
-                                 original_content_url='https://imgur.com/4MBTEI6.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/Nw2KB08.jepg',  #ImageSendMessage一次只能傳一張圖片
+                                 preview_image_url='https://imgur.com/Nw2KB08.jpeg'),
+                ImageSendMessage(original_content_url='https://imgur.com/4MBTEI6.jpeg',
                                  preview_image_url='https://imgur.com/4MBTEI6.jpeg',
                                 ),
                                  ]
@@ -48,49 +47,49 @@ def return_meal(meal):
     elif meal == "lunch":
         return [TextSendMessage(text="齁齁這是成大周邊的百元內正餐，俗又大碗啦🤤🤤"),
                 ImageSendMessage(original_content_url='https://imgur.com/jdoJL4U.jepg',
-                                 preview_image_url='https://imgur.com/jdoJL4U.jpeg',
+                                 preview_image_url='https://imgur.com/jdoJL4U.jpeg'),
 
-                                 original_content_url='https://imgur.com/TBd7cEJ.jpeg',
-                                 preview_image_url='https://imgur.com/TBd7cEJ.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/TBd7cEJ.jpeg',
+                                 preview_image_url='https://imgur.com/TBd7cEJ.jpeg'),
 
-                                 original_content_url='https://imgur.com/YGbD0ZX.jpeg',
-                                 preview_image_url='https://imgur.com/YGbD0ZX.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/YGbD0ZX.jpeg',
+                                 preview_image_url='https://imgur.com/YGbD0ZX.jpeg'),
 
-                                 original_content_url='https://imgur.com/MwevHNa.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/MwevHNa.jpeg',
                                  preview_image_url='https://imgur.com/MwevHNa.jpeg',
                                 ),
                                  ]
     elif meal == "dinner":
         return [TextSendMessage(text="想要犒賞自己嗎？百元以上正餐在這裡～🥺🥺"),
                 ImageSendMessage(original_content_url='https://imgur.com/qcHq4KX.jepg',
-                                 preview_image_url='https://imgur.com/qcHq4KX.jpeg',
+                                 preview_image_url='https://imgur.com/qcHq4KX.jpeg'),
 
-                                 original_content_url='https://imgur.com/KLFdjXL.jpeg',
-                                 preview_image_url='https://imgur.com/KLFdjXL.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/KLFdjXL.jpeg',
+                                 preview_image_url='https://imgur.com/KLFdjXL.jpeg'),
 
-                                 original_content_url='https://imgur.com/cNKNN9B.jpeg',
-                                 preview_image_url='https://imgur.com/cNKNN9B.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/cNKNN9B.jpeg',
+                                 preview_image_url='https://imgur.com/cNKNN9B.jpeg'),
 
-                                 original_content_url='https://imgur.com/QC9ISoa.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/QC9ISoa.jpeg',
                                  preview_image_url='https://imgur.com/QC9ISoa.jpeg',
                                 ),
                                  ]
     elif meal == "night_supper":
         return [TextSendMessage(text="來台南94要吃甜點～～🥺🥺"),
                 ImageSendMessage(original_content_url='https://imgur.com/iaJQ92J.jepg',
-                                 preview_image_url='https://imgur.com/iaJQ92J.jpeg',
+                                 preview_image_url='https://imgur.com/iaJQ92J.jpeg'),
 
-                                 original_content_url='https://imgur.com/O5pa1fK.jpeg',
-                                 preview_image_url='https://imgur.com/O5pa1fK.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/O5pa1fK.jpeg',
+                                 preview_image_url='https://imgur.com/O5pa1fK.jpeg'),
 
-                                 original_content_url='https://imgur.com/d3BHhvF.jpeg',
-                                 preview_image_url='https://imgur.com/d3BHhvF.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/d3BHhvF.jpeg',
+                                 preview_image_url='https://imgur.com/d3BHhvF.jpeg'),
 
-                                 original_content_url='https://imgur.com/sU9yxSU.jpeg',
-                                 preview_image_url='https://imgur.com/sU9yxSU.jpeg',
+                ImageSendMessage(original_content_url='https://imgur.com/sU9yxSU.jpeg',
+                                 preview_image_url='https://imgur.com/sU9yxSU.jpeg'),
 
-                                 original_content_url='https://imgur.com/eAKXEPi.jpeg',
-                                 preview_image_url='https://imgur.com/eAKXEPi.jpeg',
-                                ),
+                # ImageSendMessage(original_content_url='https://imgur.com/eAKXEPi.jpeg',
+                #                  preview_image_url='https://imgur.com/eAKXEPi.jpeg'
+                #                 ),
                                  ]
 
