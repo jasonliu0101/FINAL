@@ -16,7 +16,7 @@ def reply(input,username):
         return return_meal("breakfast")
     elif input == "百元內正餐！":
         return return_meal("lunch")
-    elif input == "百元以上正餐":
+    elif input == "百元以上正餐！":
         return return_meal("dinner")
     elif input == "甜點！":
         return return_meal("night_supper")
