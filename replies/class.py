@@ -1,5 +1,3 @@
-from linebot.models import *
-
 class_dict = {
     "選課查詢",
     "單科加選",
@@ -31,8 +29,4 @@ def reply(input):
                                  preview_image_url=''https://i.imgur.com/AEnaRAZ.jpeg')]
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
-
-
-
-if __name__ == '__main__':
-    app.run("0.0.0.0")      
+ 
