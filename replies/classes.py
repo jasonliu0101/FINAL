@@ -12,12 +12,11 @@ class_dict = {
 
 def reply(input):
      if input == "我要選課!":
-        return [TextSendMessage(text="讚讚$！那這是成大四間宿舍的外觀圖，有沒有特別想要的偏好呢？$$", emojis=emoji),
+        return [TextSendMessage(text="選課小幫手，請選擇要需要教學的選課流程"),
             TemplateSendMessage( #這個是按鈕樣版訊息的格式
                 alt_text="template",
                 template=ButtonsTemplate(
-                    thumbnail_image_url="https://i.imgur.com/JXTwuZw.jpeg",
-                    title="選一個偏好吧！",
+                    title="請選擇",
                     text="👇",
                     actions=[
                         MessageAction(  #這邊是在設定按鈕按下以後回傳的是訊息
