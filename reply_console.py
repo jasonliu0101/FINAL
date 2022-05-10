@@ -1,4 +1,4 @@
-from replies import dorm, food, fb
+from replies import dorm, food, fb, classes
 from linebot.models import(
     TextSendMessage
 )
@@ -10,6 +10,6 @@ def reply(input,username):  #處理main傳入的資訊，逐個比對關鍵字�
         return food.reply(input,username)
     elif input in fb.dict:
         return fb.reply(input)
-    elif input in class.dict:
-        return class.reply(input)
+    elif input in classes.dict:  #class is a reserved word so name changed
+        return classes.reply(input)
     return TextSendMessage(text="[ 這邊還沒做好 ]")
