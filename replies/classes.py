@@ -29,6 +29,9 @@ def reply(input):
     elif input == "通識登記二":
          return[ImageSendMessage(original_content_url='https://i.imgur.com/AEnaRAZ.jpeg',
                                  preview_image_url='https://i.imgur.com/AEnaRAZ.jpeg')]
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
+
 
 
 
