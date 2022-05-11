@@ -19,7 +19,8 @@ road_dict = {
     "[成功校區]博物館",
     "大成館正門口",
     "歷史系館正門口",
-    "科教中心正門口"
+    "科教中心正門口",
+    "QA"
 }
 
 def reply(input):
@@ -55,6 +56,8 @@ def reply(input):
 
     elif input == "人文路線":
         return schoolc()
+    elif input == "QA":
+        return QA()
 
     elif input == "流瀾小西腳集合地點":
         return LocationSendMessage(
@@ -313,6 +316,112 @@ def testFMS():
   }
 }
     )]
+
+def QA():
+    return [FlexSendMessage(
+    alt_text='Flex Message',
+    contents={
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://cdn-icons-png.flaticon.com/512/1545/1545606.png",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "fit",
+      "action": {
+        "type": "uri",
+        "uri": "http://linecorp.com/"
+      }
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "踏溯台南QA",
+          "weight": "bold",
+          "size": "xl"
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "margin": "md",
+          "contents": []
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "style": "primary",
+          "height": "sm",
+          "action": {
+            "type": "uri",
+            "label": "與【踏溯台南課程整體】有關",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#"
+          },
+          "color": "#d39b5c"
+        },
+        {
+          "type": "button",
+          "style": "primary",
+          "height": "sm",
+          "action": {
+            "type": "uri",
+            "label": "與【路線選擇系統】有關",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#heading=h.f746a55cr83y"
+          },
+          "color": "#d39b5c"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "與【踏查路線】有關",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#heading=h.reig2dk05jzf"
+          },
+          "color": "#d39b5c",
+          "style": "primary"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "與【踏查過程】有關",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#heading=h.45j2e8ss12bv"
+          },
+          "color": "#d39b5c",
+          "style": "primary"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "與【校內程序】有關（含成績、作業繳交、moodle系統等）",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#heading=h.1e4odsu7ap1o"
+          },
+          "color": "#d39b5c",
+          "style": "primary"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "目錄",
+            "uri": "https://docs.google.com/document/d/15qWdxlHDknoiM7_xVxj7LlcbCb7iGyHEcOUj88wl6E8/edit#"
+          },
+          "style": "primary",
+          "color": "#d39b5c"
+        }
+      ],
+      "flex": 0
+    }
+  })]
 
 def school():
     return TextSendMessage(
