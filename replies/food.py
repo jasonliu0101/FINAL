@@ -46,7 +46,7 @@ def return_meal(meal):
 
     elif meal == "lunch":
         return [TextSendMessage(text="齁齁這是成大周邊的百元內正餐，俗又大碗啦🤤🤤"),
-                ImageSendMessage(original_content_url='https://imgur.com/jdoJL4U.jepg',
+                ImageSendMessage(original_content_url='https://imgur.com/jdoJL4U.jpeg',
                                  preview_image_url='https://imgur.com/jdoJL4U.jpeg'),
 
                 ImageSendMessage(original_content_url='https://imgur.com/TBd7cEJ.jpeg',

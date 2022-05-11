@@ -14,8 +14,8 @@ from linebot.models import(
 import reply_console
 
 # [CHANGE-WITH-YOUR-BOT-PROFILES] link-to-bot backend configuration variables
-channel_access_token = 'ly2CDt7pMiUZuG/9ZA0NvusP0846dHLu0CMGUTe7zUGaZ1AgE7J9EdvIoNB7UHqLH56/ruq8XvtyeBQv/hYeR+NS/0YNYvEtMTnp5jlZlY39rPmYfRnUuLBWyMUo1HKK+/VPPshE3A3kT4M3QDVkQgdB04t89/1O/w1cDnyilFU='
-channel_secret = 'f35fa7ced6a3e64f9e066f3f454951af'
+channel_access_token = 'OLBdIZ4fk4T1Di+1/282O4XTq9QnW2PaebSWnWKB9aep4UaVJviuOhxX57lAMOF2pMf39u/0jeFPmesK0zG/jZTN6GCe02wmj66f9jMJ9FAuAeyRarkyMdIQfuEqZ+3kD0oaHfzQedT7nGKx2G9fsgdB04t89/1O/w1cDnyilFU='
+channel_secret = '2195e23ba32d82c498ec8b5ff429e7d4'
 
 
 # initialize and callback
