@@ -1,4 +1,4 @@
-from replies import dorm, food, fb, classes
+from replies import dorm, food, fb, classes, road
 from linebot.models import(
     TextSendMessage
 )
@@ -12,4 +12,8 @@ def reply(input,username):  #處理main傳入的資訊，逐個比對關鍵字�
         return fb.reply(input)
     elif input in classes.class_dict:  #class is a reserved word so name changed
         return classes.reply(input)
-    return TextSendMessage(text="[ 這邊還沒做好 ]")
+    elif input in road.road_dict:
+        return road.reply(input)
+    elif input == "alarm":
+        return TextSendMessage(text="https://liff.line.me/1645278921-kWRPP32q/?accountId=850gmohw")
+    return TextSendMessage(text="要用選單輸入哦！")
