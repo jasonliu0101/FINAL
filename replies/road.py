@@ -1,131 +1,119 @@
-#基礎設置
-from cgitb import text
-from types import MethodDescriptorType
-from flask import Flask, request, abort
-app = Flask(__name__)
-from linebot import LineBotApi, WebhookHandler         #導入LineBotApi, WebhookHandler
-from linebot.exceptions import InvalidSignatureError   
-from linebot.models import *                           #導入所有的套件
-import re                                              #導入正則表達式，接受訊息
+from linebot.models import *                                                           #導入正則表達式，接受訊息
 
-# 必須放上自己的Channel Access Token
-line_bot_api = LineBotApi('OLBdIZ4fk4T1Di+1/282O4XTq9QnW2PaebSWnWKB9aep4UaVJviuOhxX57lAMOF2pMf39u/0jeFPmesK0zG/jZTN6GCe02wmj66f9jMJ9FAuAeyRarkyMdIQfuEqZ+3kD0oaHfzQedT7nGKx2G9fsgdB04t89/1O/w1cDnyilFU=')
-# 必須放上自己的Channel Secret
-handler = WebhookHandler('2195e23ba32d82c498ec8b5ff429e7d4')
+road_dict = {
+    "成大人之道6選2",
+    "踏溯台南!",
+    "小路線2選1",
+    "大路線2選1",
+    "水乳交融",
+    "走尋老月津",
+    "要搭公車喔!流瀾小西腳",
+    "騎腳踏車就Ok光點西竹圍",
+    "環境",
+    "文化",
+    "人文路線",
+    "流瀾小西腳集合地點",
+    "光點西竹圍集合地點",
+    "大路線集合地點",
+    "成功湖側",
+    "[成功校區]博物館",
+    "大成館正門口",
+    "歷史系館正門口",
+    "科教中心正門口"
+}
 
-# 監聽所有來自 /callback 的 Post Request
-@app.route("/callback", methods=['POST'])              #設定網址
-def callback(): 
-    signature = request.headers['X-Line-Signature'] 
-    body = request.get_data(as_text=True)              #讀取資料
-    try:
-        handler.handle(body, signature)                #處理訊息
-    except InvalidSignatureError:                      #驗證錯誤
-        abort(400) 
-    return 'OK'
+def reply(input):
+    if input =="成大人之道6選2":
+        return school(event)
 
-#功能區
-@handler.add(MessageEvent, message=TextMessage) 
-#def handle_message(event):
-    #message =event.message.text               #取得使用者訊息
-    #if re.match('測試', message):             #re.match() 方法用於比較字串是否符合條件
-        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text='測試成功'))
-    #else:
-        #mtext = StickerMessage(package_id='1', sticker_id='1')
-        #line_bot_api.reply_message(event.reply_token, mtext)
+    elif input =="踏溯台南!":
+        return testFMS(event)
 
-def handle_message(event):
-    message =event.message.text               
-    if re.match('成大人之道6選2', message):            
-        school(event)
-    elif re.match('踏溯台南!', message):
-        testFMS(event)
-    elif re.match('小路線2選1', message):
-        testnear(event)
-    elif re.match('大路線2選1', message):
-        testfar(event)
-    elif re.match('水乳交融', message):            
-        far1(event)
-    elif re.match('走尋老月津', message):            
-        far2(event)
-    elif re.match('要搭公車喔!流瀾小西腳', message):            
-        near1(event)
-    elif re.match('騎腳踏車就Ok光點西竹圍', message):            
-        near2(event)
-    elif re.match('環境', message):            
-        school2(event)
-    elif re.match('文化', message):            
-        school1(event)
-    elif re.match('人文路線', message):            
-        schoolc(event)
-    elif re.match('流瀾小西腳集合地點', message): #小路線流瀾小西腳map           
-        location = LocationSendMessage(
+    elif input =="小路線2選1":
+        return testnear(event)
+
+    elif input =="大路線2選1":
+        return testfar(event)
+
+    elif input =="水乳交融":
+        return far1(event)
+
+    elif input =="走尋老月津":
+        return far2(event)
+
+    elif input == "要搭公車喔!流瀾小西腳":
+        return near1(event)
+
+    elif input == "騎腳踏車就Ok光點西竹圍":
+        return near2(event)
+
+    elif input == "環境":
+        return school2(event)
+
+    elif input == "文化":
+        return schoolc(event)
+
+    elif input == "人文路線":
+        return get_dorm_result_man(input)
+    elif input == "流瀾小西腳集合地點":
+        return [LocationSendMessage(
             title='流瀾小西腳集合地點',                   
             address='成功大學光復校區中文系館前石桌',               
             latitude=23.000359860755243,
             longitude=120.21789006828647
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('光點西竹圍集合地點', message): #小路線光點西竹圍map         
-        location = LocationSendMessage(
+        )]
+    elif input == "光點西竹圍集合地點":
+        return [LocationSendMessage(
             title='光點西竹圍集合地點',                   
             address='成功大學光復校區光口警衛室後、中正堂側廣場',               
             latitude=22.996592124816676,
             longitude=120.21667107940547
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('大路線集合地點', message): #大路線map           
-        location = LocationSendMessage(
+        )]
+    elif input == "大路線集合地點":
+        return [LocationSendMessage(
             title='大路線集合地點',                   
             address='成功大學光復校區修齊大樓前',               
             latitude=23.00081250635751,
             longitude=120.21783190047728
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('成功湖側', message): #成大人人文路線map           
-        location = LocationSendMessage(
+        )]
+    elif input == "成功湖側":
+        return [LocationSendMessage(
             title='成大人之道小西門起路線',                   
             address='成功大學光復校區成功湖側',               
             latitude=23.000317696090534,
             longitude=120.2172642389391
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('[成功校區]博物館', message): #成大人人文路線map           
-        location = LocationSendMessage(
+        )]
+    elif input == "[成功校區]博物館":
+        return [LocationSendMessage(
             title='成大人之道博物館起路線',                   
             address='成功大學成功校區博物館前',               
             latitude=22.99682020299907,
             longitude=120.21958376227306
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('大成館正門口', message): #成大人環境植物路線map
-        location = LocationSendMessage(
+        )]
+    elif input == "大成館正門口":
+        return [LocationSendMessage(
             title='成大人之道榕園路線',                   
             address='成功大學大成館正門口',               
             latitude=22.999692262660368,
             longitude=120.21597163191801
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('歷史系館正門口', message): #成大人環境植物路線map
-        location = LocationSendMessage(
+        )]
+    elif input == "歷史系館正門口":
+        return [LocationSendMessage(
             title='成大人之道岩石路線',                   
             address='成功大學歷史系館正門口',               
             latitude=22.999571090506745,
             longitude=120.2173025894045
-        )
-        line_bot_api.reply_message(event.reply_token, location)
-    elif re.match('科教中心正門口', message): #成大人環境植物路線map
-        location = LocationSendMessage(
+        )]
+    elif input == "科教中心正門口":
+        return [LocationSendMessage(
             title='成大人之道科學路線',                   
             address='成功大學歷史系館正門口',               
             latitude=22.997903,
             longitude=120.218641
-        )
-        line_bot_api.reply_message(event.reply_token, location)     
-    
+        )]    
 
 def testFMS(event):
-  mtext= FlexSendMessage(
+ return [FlexSendMessage(
     alt_text='Flex Message',
     contents={
   "type": "bubble",
@@ -323,21 +311,19 @@ def testFMS(event):
     }
   }
 }
-    )
-  line_bot_api.reply_message(event.reply_token,mtext)
+    )]
 
 def school(event):
-    mtext =TextSendMessage(
+    return [TextSendMessage(
     text='請選擇',
     quick_reply=QuickReply(
     items=[
         QuickReplyButton(action=MessageAction(label='文化', text='文化')),
         QuickReplyButton(action=MessageAction(label='環境', text='環境')),
-    ]))
-    line_bot_api.reply_message(event.reply_token, mtext)
-
+    ]))]
+    
 def school1(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {"type": "bubble",
@@ -474,11 +460,10 @@ def school1(event):
       ],
       "flex": 0
     }}
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
-
+    )]
+    
 def school2(event):
-  mtext = FlexSendMessage(
+  return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {
@@ -1817,11 +1802,10 @@ def school2(event):
       }
     ]
   }
-  )
-  line_bot_api.reply_message(event.reply_token, mtext)
-
+  )]
+  
 def schoolc(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {
@@ -2494,22 +2478,20 @@ def schoolc(event):
             }
           }
     ]
-  }
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
-
+  })]
+    
 def testnear(event):
-    mtext =TextSendMessage(
+    return [TextSendMessage(
     text='請選擇',
     quick_reply=QuickReply(
     items=[
         QuickReplyButton(action=MessageAction(label='遠', text='要搭公車喔!流瀾小西腳')),
         QuickReplyButton(action=MessageAction(label='近', text='騎腳踏車就Ok光點西竹圍')),
-    ]))
-    line_bot_api.reply_message(event.reply_token, mtext)
+    ]))]
+    
    
 def near1(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {"type": "bubble",
@@ -2647,11 +2629,10 @@ def near1(event):
       "flex": 0
     }
     }
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
+    )]
 
 def near2(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {"type": "bubble",
@@ -2789,21 +2770,19 @@ def near2(event):
       "flex": 0
     }
     }
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
+    )]
 
 def testfar(event):
-    mtext =TextSendMessage(
+    return [TextSendMessage(
     text='請選擇',
     quick_reply=QuickReply(
     items=[
         QuickReplyButton(action=MessageAction(label='動物', text='水乳交融')),
         QuickReplyButton(action=MessageAction(label='人文', text='走尋老月津')),
-    ]))
-    line_bot_api.reply_message(event.reply_token, mtext)
+    ]))]
 
 def far1(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {"type": "bubble",
@@ -2941,11 +2920,10 @@ def far1(event):
       "flex": 0
     }
     }
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
+    )]
 
 def far2(event):
-    mtext = FlexSendMessage(
+    return [FlexSendMessage(
     alt_text='Flex Message',
     contents=
     {"type": "bubble",
@@ -3083,10 +3061,5 @@ def far2(event):
       "flex": 0
     }
     }
-    )
-    line_bot_api.reply_message(event.reply_token, mtext)
+    )]
 
-
-#執行程式(結尾)
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
